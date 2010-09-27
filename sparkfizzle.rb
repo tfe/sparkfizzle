@@ -1,6 +1,8 @@
-require 'rubygems'
 require 'logger'
+require 'rubygems'
+gem 'tweetstream', '~> 1'
 require 'tweetstream'
+gem 'broach', '~> 0.2'
 require 'broach'
 
 config_file = ARGV.first
