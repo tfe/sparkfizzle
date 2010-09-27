@@ -1,0 +1,14 @@
+---
+twitter:
+  user: dhh
+  password: pagani4me
+campfire:
+  account: 37signals
+  token: 746154e8040d40e085f455a7a57eb9ff695dc318
+  room: Command Center
+follows:
+  - 14561327 # @dhh
+  - 20749410 # @finkd
+track_terms:
+  - facebook valuation
+  - zuckerberg
