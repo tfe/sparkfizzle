@@ -14,15 +14,15 @@ Broach.settings = {
   'token'   => CONFIG['campfire']['token']
 }
 
+tweetstream = TweetStream::Client.new(CONFIG['twitter']['user'], CONFIG['twitter']['password'])
+follows = CONFIG['follows']
+track_terms = CONFIG['track_terms']
+
 begin
 
   LOG.info "Monitoring tweets"
 
-  TweetStream::Daemon.new(
-    CONFIG['twitter']['user'],
-    CONFIG['twitter']['password'],
-    app_name
-  ).filter(:follow => CONFIG['follows'], :track => CONFIG['track_terms']) do |status|
+  tweetstream.filter(:follow => follows, :track => track_terms) do |status|
     LOG.debug "Found tweet: http://twitter.com/#{status.user.screen_name}/status/#{status.id}"
     Broach.speak(CONFIG['campfire']['room'], "http://twitter.com/#{status.user.screen_name}/status/#{status.id}", :type => :tweet)
   end.on_delete do |status_id, user_id|
